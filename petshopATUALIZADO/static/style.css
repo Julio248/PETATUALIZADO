@@ -1,0 +1,728 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e6f0fa, #d4f4dd);
+    color: #2b2b2b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding-bottom: 80px;
+}
+
+.login-body {
+    background: linear-gradient(135deg, #5ba596, #d4f4dd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, #2a7b4b, #3da55c);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 700;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 3px solid #fff;
+}
+
+nav {
+    background: #1f2a44;
+    padding: 12px 20px;
+    width: 100%;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* Alterado para separar links e logout */
+    align-items: center;
+}
+
+nav .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 6px;
+    position: relative;
+}
+
+nav a i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+nav a:hover {
+    background: #3da55c;
+    transform: translateY(-1px);
+}
+
+nav a:hover i {
+    transform: scale(1.15);
+}
+
+nav a.active {
+    background: #3da55c;
+    font-weight: 600;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+nav a.logout {
+    background: #e76f51;
+    /* Removido margin-left: auto, agora controlado pelo justify-content: space-between */
+}
+
+nav a.logout:hover {
+    background: #d64a2f;
+}
+
+.container {
+    padding: 30px 15px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.welcome-message {
+    background: #fff;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.5em;
+    color: #2a7b4b;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-left: 4px solid #3da55c;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 1100px;
+    padding: 15px;
+}
+
+.card {
+    background: #fff;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 280px;
+    border: 2px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-color: #3da55c;
+}
+
+.card i {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    color: #2a7b4b;
+    transition: transform 0.3s ease;
+}
+
+.card:hover i {
+    transform: rotate(8deg) scale(1.1);
+}
+
+.card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #2b2b2b;
+    font-weight: 600;
+}
+
+.card p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.card .number {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #3da55c;
+}
+
+.card button {
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #2a7b4b, #3da55c);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card button:hover {
+    background: linear-gradient(135deg, #3da55c, #2a7b4b);
+    transform: scale(1.05);
+}
+
+.info-card {
+    background: linear-gradient(135deg, #fff, #e9f5ec);
+}
+
+.action-card {
+    background: linear-gradient(135deg, #2a7b4b, #3da55c);
+    color: white;
+}
+
+.action-card h3, .action-card p {
+    color: white;
+}
+
+.action-card button {
+    background: #fff;
+    color: #2a7b4b;
+}
+
+.action-card button:hover {
+    background: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+table th {
+    background: linear-gradient(135deg, #2a7b4b, #3da55c);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+table tr {
+    transition: all 0.3s ease;
+}
+
+table tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+table tr:hover {
+    background-color: #e9f5ec;
+    transform: scale(1.005);
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.actions button {
+    padding: 8px 15px;
+    background: linear-gradient(135deg, #3da55c, #2a7b4b);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.actions button:hover {
+    background: linear-gradient(135deg, #2a7b4b, #3da55c);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.form-container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 550px;
+    margin: 25px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-container h2 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    color: #2a7b4b;
+    text-align: center;
+    font-weight: 600;
+}
+
+.cadastro-form .input-group {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.cadastro-form .input-group i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    font-size: 1.2em;
+}
+
+.cadastro-form input,
+.cadastro-form select,
+.cadastro-form textarea {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.cadastro-form textarea {
+    height: 90px;
+    resize: vertical;
+}
+
+.cadastro-form input:focus,
+.cadastro-form select:focus,
+.cadastro-form textarea:focus {
+    border-color: #3da55c;
+    box-shadow: 0 0 6px rgba(61, 165, 92, 0.3);
+    outline: none;
+}
+
+.form-container .servicos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container .servicos label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1.1em;
+    color: #333;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.form-container .servicos input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #3da55c;
+}
+
+.form-container .servicos input[type="checkbox"]:checked + span {
+    color: #3da55c;
+    font-weight: 600;
+}
+
+.form-container .horario-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container .horario-container label {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.form-container .horario-container input {
+    padding: 10px;
+    width: 180px;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    font-size: 1em;
+}
+
+.form-container button {
+    width: 100%;
+    max-width: 200px;
+    padding: 12px;
+    background: linear-gradient(135deg, #2a7b4b, #3da55c);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 8px 0;
+}
+
+.form-container button:hover {
+    background: linear-gradient(135deg, #3da55c, #2a7b4b);
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-container button.cancel {
+    background: linear-gradient(135deg, #e76f51, #d64a2f);
+}
+
+.form-container button.cancel:hover {
+    background: linear-gradient(135deg, #d64a2f, #e76f51);
+}
+
+.detalhes-container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 550px;
+    margin: 25px auto;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.detalhes-container h2 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    color: #2a7b4b;
+    font-weight: 600;
+}
+
+.detalhes-container p {
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.detalhes-container .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.detalhes-container button {
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #2a7b4b, #3da55c);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.detalhes-container button:hover {
+    background: linear-gradient(135deg, #3da55c, #2a7b4b);
+    transform: scale(1.05);
+}
+
+.estoque-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.estoque-form input[type="number"] {
+    width: 100px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.estoque-form input[type="number"]:focus {
+    border-color: #3da55c;
+    box-shadow: 0 0 6px rgba(61, 165, 92, 0.3);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.button-group button {
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #2a7b4b, #3da55c);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-group button:hover {
+    background: linear-gradient(135deg, #3da55c, #2a7b4b);
+    transform: scale(1.05);
+}
+
+.button-group button.cancel {
+    background: linear-gradient(135deg, #e76f51, #d64a2f);
+}
+
+.button-group button.cancel:hover {
+    background: linear-gradient(135deg, #d64a2f, #e76f51);
+}
+
+footer {
+    background: #1f2a44;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    width: 100%;
+    margin-top: 40px;
+    box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.login-header {
+    margin-bottom: 30px;
+}
+
+.login-header i {
+    color: #2a7b4b;
+    margin-bottom: 15px;
+    font-size: 3em;
+    transition: transform 0.3s ease;
+}
+
+.login-header:hover i {
+    transform: rotate(360deg);
+}
+
+.login-header h1 {
+    font-size: 2.2em;
+    color: #2b2b2b;
+    font-weight: 600;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    font-size: 1.2em;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #3da55c;
+    box-shadow: 0 0 6px rgba(61, 165, 92, 0.3);
+    outline: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #2a7b4b, #3da55c);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #3da55c, #2a7b4b);
+    transform: scale(1.05);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.signup-link {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #555;
+}
+
+.signup-link a {
+    color: #2a7b4b;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+    color: #3da55c;
+    text-decoration: underline;
+}
+
+.flash-message {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    text-align: center;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.flash-message.error {
+    background: #ffe6e6;
+    color: #b71c1c;
+    border: 2px solid #e53935;
+}
+
+.flash-message.success {
+    background: #e9f5ec;
+    color: #2a7b4b;
+    border: 2px solid #3da55c;
+}
+
+@media (max-width: 768px) {
+    header { font-size: 2em; padding: 15px 0; }
+    nav { flex-direction: column; padding: 10px 0; }
+    nav .nav-links { 
+        flex-direction: column; 
+        gap: 8px; 
+        justify-content: center;
+        align-items: center;
+    }
+    nav a { padding: 8px 12px; font-size: 14px; }
+    nav a.logout { margin-left: 0; margin-top: 10px; }
+    .container { padding: 20px 10px; }
+    .dashboard { flex-direction: column; align-items: center; }
+    .card { max-width: 95%; }
+    .form-container { padding: 25px; max-width: 95%; }
+    .form-container .servicos { flex-direction: column; align-items: center; }
+    .estoque-form { flex-direction: column; }
+    .estoque-form input[type="number"] { width: 100%; }
+    .login-card { padding: 25px; max-width: 95%; }
+    .login-header h1 { font-size: 1.8em; }
+    .button-group { flex-direction: column; gap: 8px; }
+    footer { font-size: 0.8em; padding: 12px; }
+}

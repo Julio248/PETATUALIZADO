@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop - Principal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>Pet Mais</header>
+    <nav>
+        <div class="nav-links">
+            <a href="{{ url_for('principal') }}" class="{% if request.endpoint == 'principal' %}active{% endif %}">
+                <i class="fas fa-home"></i> Início
+            </a>
+            <a href="{{ url_for('cadastro') }}" class="{% if request.endpoint == 'cadastro' %}active{% endif %}">
+                <i class="fas fa-plus"></i> Cadastrar Animal
+            </a>
+            <a href="{{ url_for('animais') }}" class="{% if request.endpoint == 'animais' %}active{% endif %}">
+                <i class="fas fa-paw"></i> Lista de Animais
+            </a>
+            <a href="{{ url_for('relatorio') }}" class="{% if request.endpoint == 'relatorio' %}active{% endif %}">
+                <i class="fas fa-file-alt"></i> Relatórios
+            </a>
+            <a href="{{ url_for('estoque') }}" class="{% if request.endpoint == 'estoque' %}active{% endif %}">
+                <i class="fas fa-box"></i> Estoque
+            </a>
+        </div>
+        <a href="{{ url_for('logout') }}" class="logout">
+            <i class="fas fa-sign-out-alt"></i> Sair
+        </a>
+    </nav>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="welcome-message">
+            <i class="fas fa-paw"></i> Bem-vindo(a), {{ usuario.nome }}!
+        </div>
+        <div class="dashboard">
+            <div class="card info-card">
+                <i class="fas fa-paw"></i>
+                <h3>Total de Animais</h3>
+                <p class="number">{{ total_animais }}</p>
+            </div>
+            <div class="card info-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Estoque Baixo</h3>
+                <p class="number">{{ estoque_baixo }}</p>
+            </div>
+            <div class="card info-card">
+                <i class="fas fa-calendar-day"></i>
+                <h3>Atendimentos Hoje</h3>
+                <p class="number">{{ atendimentos_hoje }}</p>
+            </div>
+            <div class="card action-card">
+                <i class="fas fa-plus"></i>
+                <h3>Cadastrar Animal</h3>
+                <p>Adicione um novo animal ao sistema</p>
+                <a href="{{ url_for('cadastro') }}"><button>Cadastrar</button></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
